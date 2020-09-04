@@ -1,6 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.0"
+    ext {
+        // kotlin compiler
+        kotlin_version = "1.4.0"
+        // core ktx library
+        core_ktx_version = "1.3.1"
+        // app compat library
+        app_compat_version = "1.2.0"
+        //constraint layout library
+        constraintlayout_version = "2.0.1"
+        // Architectural components library
+        architecure_comp_version = "2.2.0"
+        // room persistent library
+        room_version = "2.2.5"
+        // coroutine library
+        coroutine_library = "1.3.9"
+        // coroutine lifecycle scope library
+        coroutine_lifecycle_library = "2.2.0"
+        // retrofit library for http connection
+        retrofit_version = "2.9.0"
+        okhttp3_version = "4.5.0"
+        // navigation components library for jetpack nav
+        navigation_components_library = "2.3.0"
+        // glide library for image loading
+        glide_version = "4.11.0"
+
+    }
     repositories {
         google()
         jcenter()
@@ -8,6 +33,8 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_components_library"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
