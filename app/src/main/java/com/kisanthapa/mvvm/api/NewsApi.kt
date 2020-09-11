@@ -24,7 +24,7 @@ interface NewsApi {
     @GET("top-everything")
     suspend fun searchForNews(
         @Query("q")
-        countryCode: String,
+        searchQuery: String,
 
         @Query("page")
         pageNumber: Int = 1,

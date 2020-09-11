@@ -10,9 +10,8 @@ class NewsViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(NewsRepository::class.java))
+        if (modelClass.isAssignableFrom(NewsViewModel::class.java))
             return NewsViewModel(newsRepository) as T
-
         throw IllegalArgumentException()
     }
 }

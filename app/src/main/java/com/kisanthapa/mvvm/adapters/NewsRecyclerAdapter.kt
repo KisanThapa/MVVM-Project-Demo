@@ -29,7 +29,7 @@ class NewsRecyclerAdapter : RecyclerView.Adapter<NewsRecyclerAdapter.ArticleView
         override fun areContentsTheSame(oldItem: Article, newItem: Article) = oldItem == newItem
     }
 
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_article_preview, parent, false)
