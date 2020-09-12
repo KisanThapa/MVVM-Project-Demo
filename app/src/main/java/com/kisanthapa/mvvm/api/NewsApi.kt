@@ -21,7 +21,7 @@ interface NewsApi {
     ): Response<NewsResponse>
 
 
-    @GET("top-everything")
+    @GET("everything")
     suspend fun searchForNews(
         @Query("q")
         searchQuery: String,
