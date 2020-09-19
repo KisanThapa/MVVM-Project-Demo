@@ -47,7 +47,9 @@ class NewsRecyclerAdapter : RecyclerView.Adapter<NewsRecyclerAdapter.ArticleView
             Glide.with(this).load(article.urlToImage).into(ivArticleImage)
 
             setOnClickListener {
-                onItemClickListener?.let { it(article) }
+                onItemClickListener?.let {
+                    it(article)
+                }
             }
         }
     }

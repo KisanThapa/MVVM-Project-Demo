@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kisanthapa.mvvm.R
 import com.kisanthapa.mvvm.adapters.NewsRecyclerAdapter
@@ -11,7 +12,6 @@ import com.kisanthapa.mvvm.ui.NewsActivity
 import com.kisanthapa.mvvm.ui.NewsViewModel
 import com.kisanthapa.mvvm.utility.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
-import java.util.*
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
@@ -27,7 +27,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         setUpRecyclerView()
 
         // Observe data in view model
-        viewModel.breakingNews.observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
+        viewModel.breakingNews.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Error -> {
                     hideProgressBar()
@@ -47,6 +47,15 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }
         })
 
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_breakingNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
 
     }
 

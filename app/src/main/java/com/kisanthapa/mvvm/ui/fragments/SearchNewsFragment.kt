@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kisanthapa.mvvm.R
 import com.kisanthapa.mvvm.adapters.NewsRecyclerAdapter
@@ -70,6 +71,16 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             }
         }
 
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_searchNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
     }
 
     private fun showProgressBar() {
